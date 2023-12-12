@@ -57,7 +57,7 @@ seeds = []
 seed_ranges = []
 current_map, current_map_name = None, None
 for line in fileinput.input():
-    if (seeds_match := re.match(r'seeds:\s+(.+)', line.strip())):
+    if (seeds_match := seeds_pattern.match(line.strip())):
         seeds = [int(s) for s in seeds_match[1].split()]
         seed_ranges = [(seeds[i], seeds[i+1]) for i in range(0, len(seeds), 2)]
         print('Seeds:', seeds, ', seed ranges:', seed_ranges)
